@@ -21,6 +21,10 @@ class Console extends Controller
 		$data["erro"] 	  = null;
 		$data["retorno_cmd"] = null;
 		
+		if(!function_exists('ssh2_connect')){
+			$data["erro"] = "Existe uma pendência: <strong>libssh2</strong> não está instalada e/ou habilitada no servidor." ;
+		}
+		
 		if(!empty($data["host"])){
 			$sshModel = new Ssh();
 			
